@@ -25,7 +25,7 @@ class Home extends BaseController
 
         $data = [
             'title' => 'TheGoodOne - Quality Content & Resources',
-            'description' => 'Discover high-quality articles, tips, and resources for personal and professional growth. Read our latest blog posts on various topics.',
+            'metaDescription' => 'Discover high-quality articles, tips, and resources for personal and professional growth. Read our latest blog posts on various topics.',
             'posts' => $posts,
         ];
 
@@ -36,7 +36,7 @@ class Home extends BaseController
     {
         $data = [
             'title' => 'About TheGoodOne',
-            'description' => 'Learn about TheGoodOne and our mission to provide quality content and resources.',
+            'metaDescription' => 'Learn about TheGoodOne and our mission to provide quality content and resources.',
         ];
 
         return view('pages/about', $data);

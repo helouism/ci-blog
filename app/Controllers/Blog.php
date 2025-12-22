@@ -46,7 +46,7 @@ class Blog extends BaseController
             'post' => $post,
             'recentPosts' => $recentPosts,
             'authorBio' => $authorBio,
-            'metaTitle' => $post['title'] . ' - TheGoodOne Blog',
+            'title' => $post['title'] . ' - TheGoodOne Blog',
             'metaDescription' => $post['meta_description'],
 
         ];
@@ -85,7 +85,7 @@ class Blog extends BaseController
             'posts' => $posts,
             'pager' => $this->postModel->pager,
             'recentPosts' => $recentPosts,
-            'metaTitle' => 'Posts tagged with "' . $tag->name . '" - TheGoodOne Blog',
+            'title' => 'Posts tagged with "' . $tag->name . '" - TheGoodOne Blog',
             'metaDescription' => 'Explore all posts tagged with ' . $tag->name . ' on TheGoodOne Blog.',
         ];
 

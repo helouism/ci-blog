@@ -1,7 +1,8 @@
 <?= $this->section("adminStyles") ?>
 <link href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
 
-<?= $this->endSection() ?><?= $this->extend("admin/layout/app") ?>
+<?= $this->endSection() ?>
+<?= $this->extend("admin/layout/app") ?>
 <?= $this->section("adminContent") ?>
 
 <?php if (isset($validation)): ?>

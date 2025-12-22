@@ -84,6 +84,15 @@ class PostModel extends Model
             ->update();
     }
 
+    public function searchPosts(string $keyword)
+    {
+        return $this->like('title', $keyword)
+            ->orLike('meta_description', $keyword)
+            ->orLike('content', $keyword)
+            ->orderBy('created_at', 'DESC')
+            ->findAll();
+    }
+
 
 
 }

@@ -1,28 +1,28 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom sticky-top">
-    <div class="container-lg">
-        <a class="navbar-brand fw-bold" href="<?= url_to('landing_page') ?>">TheGoodOne</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-expand-lg bg-primary border-bottom">
+    <div class="container-fluid">
+        <a class="navbar-brand fw-bold" href="<?= base_url() ?>">TheGoodOne</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= url_to('landing_page') ?>">Home</a>
+                    <a class="nav-link" aria-current="page" href="<?= base_url() ?>">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= url_to('landing_page') ?>#blog">Blog</a>
+                    <a class="nav-link" href="<?= base_url("#blog") ?>">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <form class="d-flex gap-2" role="search" action="<?= url_to(
+                        "search_results",
+                    ) ?>" method="get">
+                        <input name="query" class="form-control form-control" type="search"
+                            placeholder="Search posts..." aria-label="Search" />
+                        <button class="btn btn-primary btn-sm" type="submit">Search</button>
+                    </form>
                 </li>
 
-                <?php if (auth()->loggedIn()): ?>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= url_to('admin_dashboard') ?>">Dashboard</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= url_to('logout') ?>">Logout</a>
-                    </li>
-
-                <?php endif; ?>
             </ul>
         </div>
     </div>
