@@ -15,8 +15,8 @@ class Home extends BaseController
 
     public function index(): string
     {
-        // Get featured posts
-        $posts = $this->postModel->orderBy('created_at', 'DESC')->limit(9)->findAll();
+        // Get published posts ordered by creation date
+        $posts = $this->postModel->where('status', 'published')->orderBy('created_at', 'DESC')->limit(9)->findAll();
 
         // Add username to each post
         foreach ($posts as &$post) {
@@ -30,15 +30,5 @@ class Home extends BaseController
         ];
 
         return view('home', $data);
-    }
-
-    public function about(): string
-    {
-        $data = [
-            'title' => 'About TheGoodOne',
-            'metaDescription' => 'Learn about TheGoodOne and our mission to provide quality content and resources.',
-        ];
-
-        return view('pages/about', $data);
     }
 }

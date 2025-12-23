@@ -47,6 +47,14 @@
         </small>
     </div>
 
+    <div class="mb-3">
+        <label for="status" class="form-label">Status</label>
+        <select class="form-select" id="status" name="status" required>
+            <option value="draft" <?= set_select('status', 'draft', true) ?>>Draft</option>
+            <option value="published" <?= set_select('status', 'published') ?>>Published</option>
+        </select>
+    </div>
+
     <button type="submit" class="btn btn-primary">Create Post</button>
 </form>
 
@@ -119,7 +127,7 @@
                     }
                 },
 
-                // IMPORTANT: revert needs CSRF too, so implement custom revert using POST form data
+                
                 revert: (uniqueFileId, load, error) => {
                     $.ajax({
                         url: "<?= url_to('admin_posts_image_revert') ?>",

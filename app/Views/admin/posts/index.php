@@ -22,6 +22,7 @@
                         <th scope="col" class="fw-bold">Title</th>
                         <th scope="col" class="fw-bold">Content Preview</th>
                         <th scope="col" class="fw-bold">Created At</th>
+                        <th scope="col" class="fw-bold">Status</th>
                         <th scope="col" class="fw-bold text-center">Actions</th>
                     </tr>
                 </thead>
@@ -42,6 +43,13 @@
                                 <small class="text-muted">
                                     <?= isset($post['created_at']) ? date('M d, Y', strtotime($post['created_at'])) : 'N/A' ?>
                                 </small>
+                            </td>
+                            <td>
+                                <?php if ($post['status'] === 'published'): ?>
+                                    <span class="badge bg-success">Published</span>
+                                <?php else: ?>
+                                    <span class="badge bg-secondary">Draft</span>
+                                <?php endif; ?>
                             </td>
                             <td>
                                 <div class="btn-group btn-group-sm" role="group">

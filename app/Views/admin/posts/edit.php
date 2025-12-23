@@ -74,6 +74,14 @@
         </small>
     </div>
 
+    <div class="mb-3">
+        <label for="status" class="form-label">Status</label>
+        <select class="form-select" id="status" name="status" required>
+            <option value="draft" <?= set_select('status', 'draft', (old('status', $post['status'] ?? '') === 'draft')) ?>>Draft</option>
+            <option value="published" <?= set_select('status', 'published', (old('status', $post['status'] ?? '') === 'published')) ?>>Published</option>
+        </select>
+    </div>
+
     <button type="submit" class="btn btn-primary">Update Post</button>
 </form>
 

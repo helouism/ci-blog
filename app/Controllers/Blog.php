@@ -19,8 +19,8 @@ class Blog extends BaseController
 
     public function view($slug)
     {
-        // Get post with tags
-        $post = $this->postModel->where('slug', $slug)->withTags()->first();
+        // Get published post with tags
+        $post = $this->postModel->where('slug', $slug)->where('status', 'published')->withTags()->first();
 
         if (!$post) {
             throw new \CodeIgniter\Exceptions\PageNotFoundException("Post not found");
@@ -31,8 +31,8 @@ class Blog extends BaseController
         // Get post author username
         $post['username'] = $this->postModel->getPostAuthorUsername($post['id']);
         $authorBio = $this->userModel->getBioByUsername($post['username']);
-        // Get recent posts for sidebar
-        $recentPosts = $this->postModel->orderBy('created_at', 'DESC')->limit(5)->findAll();
+        // Get recent published posts for sidebar
+        $recentPosts = $this->postModel->where('status', 'published')->orderBy('created_at', 'DESC')->limit(5)->findAll();
 
         // Add username to recent posts
         foreach ($recentPosts as &$recentPost) {
@@ -64,8 +64,8 @@ class Blog extends BaseController
             throw new \CodeIgniter\Exceptions\PageNotFoundException("Tag not found");
         }
 
-        // Get posts with this tag using the tag slug - paginated
-        $posts = $this->postModel->withAnyTags([$tagSlug])->orderBy('created_at', 'DESC')->paginate(12, 'tag');
+        // Get published posts with this tag using the tag slug - paginated
+        $posts = $this->postModel->where('status', 'published')->withAnyTags([$tagSlug])->orderBy('created_at', 'DESC')->paginate(12, 'tag');
 
         // Add username to each post
         foreach ($posts as &$post) {

@@ -29,7 +29,7 @@
                     Explore our comprehensive blog today.</p>
                 <div class="d-flex gap-3 flex-wrap">
                     <a href="#blog" class="btn btn-light btn-lg fw-600">Read Our Blog</a>
-                    <a href="#" class="btn btn-outline-light btn-lg fw-600">Learn More</a>
+                    
                 </div>
             </div>
         </div>

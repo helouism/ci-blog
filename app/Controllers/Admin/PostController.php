@@ -55,6 +55,7 @@ class PostController extends BaseController
             "content" => "required|min_length[10]",
             "tags" => "permit_empty|max_length[500]",
             "featured_image_token" => "permit_empty|regex_match[/^[a-f0-9]{32}$/]",
+            "status" => "required|in_list[draft,published]",
         ];
 
         $data = [
@@ -64,6 +65,7 @@ class PostController extends BaseController
             "meta_description" => $this->request->getPost("meta_description"),
             "user_id" => $user->id,
             "tags" => $this->request->getPost("tags"),
+            "status" => $this->request->getPost("status"),
         ];
 
         if (
@@ -92,6 +94,7 @@ class PostController extends BaseController
 
     public function edit($id)
     {
+        helper('form');
         $user = auth()->user();
 
         $post = $this->postModel->withTags()->find($id);
@@ -113,7 +116,7 @@ class PostController extends BaseController
 
     public function update($id)
     {
-        helper(['form']);
+        helper('form');
 
         $post = $this->postModel->find($id);
         if (!$post) {
@@ -127,6 +130,7 @@ class PostController extends BaseController
             "content" => "required|min_length[10]",
             "tags" => "permit_empty|max_length[500]",
             "featured_image_token" => "permit_empty|regex_match[/^[a-f0-9]{32}$/]",
+            "status" => "required|in_list[draft,published]"
         ];
 
         $data = [
@@ -136,6 +140,7 @@ class PostController extends BaseController
             "slug" => (string) $this->request->getPost("slug"),
             "meta_description" => (string) $this->request->getPost("meta_description"),
             "tags" => (string) $this->request->getPost("tags"),
+            "status" => (string) $this->request->getPost("status"),
         ];
 
         $token = (string) $this->request->getPost('featured_image_token');

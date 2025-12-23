@@ -22,6 +22,7 @@ class PostModel extends Model
         "content",
         "tags",
         "views",
+        "status",
     ];
 
     protected bool $allowEmptyInserts = false;
@@ -92,6 +93,8 @@ class PostModel extends Model
             ->orderBy('created_at', 'DESC')
             ->findAll();
     }
+
+    
 
 
 
