@@ -106,7 +106,13 @@ class Blog extends BaseController
             throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
         }
 
-        return view('pages/view', ['page' => $page]);
+        $data = [
+            'title' => $page['title'] . ' - TheGoodOne',
+            'metaDescription' => $page['meta_description'],
+            'page' => $page,
+        ];
+
+        return view('pages/view', $data);
     }
 
     private function trackUniquePostView(int $postId): void

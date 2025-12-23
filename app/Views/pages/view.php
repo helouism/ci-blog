@@ -4,8 +4,8 @@
     {
         "@context": "https://schema.org",
         "@type": "WebPage",
-        "name": "<?= esc($page['title']) ?>",
-        "description": "<?= esc($page['meta_description']) ?>",
+        "name": "<?= esc($title) ?>",
+        "description": "<?= esc($metaDescription) ?>",
         "url": "<?= current_url() ?>"
     }   
 </script>
@@ -16,9 +16,9 @@
 <?= $this->section('pageContent') ?>
 <header class="py-4">
     <div class="container-lg">
-        <h1 class="h2"><?= esc($page['title']) ?></h1>
-        <?php if (!empty($page['meta_description'])): ?>
-            <p class="mb-0 mt-2 text-muted"><?= esc($page['meta_description']) ?></p>
+        <h1 class="h2"><?= esc($title) ?></h1>
+        <?php if (!empty($metaDescription)): ?>
+            <p class="mb-0 mt-2 text-muted"><?= esc($metaDescription) ?></p>
         <?php endif; ?>
     </div>
 </header>
